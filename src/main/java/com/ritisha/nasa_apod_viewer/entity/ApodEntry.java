@@ -1,4 +1,4 @@
-package main.java.com.ritisha.nasa_apod_viewer.entity;
+package com.ritisha.nasa_apod_viewer.entity;
 
 import jakarta.persistence.*;
 
@@ -14,8 +14,9 @@ public class ApodEntry {
     private LocalDate localDate;
     private String title;
 
-    @Column(length = 4000)
-    private String explanation;
+    // Use @Column(columnDefinition = "TEXT") to allow for longer text in the explanation field in postgres. 
+    @Column(columnDefinition = "TEXT")
+    private String explanation; 
 
     private String url;
     private String mediaType;
@@ -34,7 +35,7 @@ public class ApodEntry {
     public String toString() {
         return String.format(
                 "ApodEntry[id=%d, localDate='%s', title='%s', explanation='%s',  url='%s', mediaType='%s']",
-                id, localDate, title, explanation, url);
+                id, localDate, title, explanation, url, mediaType);
     }
 
     public Long getId() {

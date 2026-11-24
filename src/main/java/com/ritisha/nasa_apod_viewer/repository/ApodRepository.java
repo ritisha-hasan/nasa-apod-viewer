@@ -1,6 +1,6 @@
-package main.java.com.ritisha.nasa_apod_viewer.repository;
+package com.ritisha.nasa_apod_viewer.repository;
 
-import main.java.com.ritisha.nasa_apod_viewer.entity.ApodEntry;
+import com.ritisha.nasa_apod_viewer.entity.ApodEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

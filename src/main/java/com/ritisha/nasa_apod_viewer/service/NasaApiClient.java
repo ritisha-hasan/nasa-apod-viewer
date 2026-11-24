@@ -1,11 +1,11 @@
-package main.java.com.ritisha.nasa_apod_viewer.service;
+package com.ritisha.nasa_apod_viewer.service;
 
-import main.java.com.ritisha.nasa_apod_viewer.dto.NasaApodResponse;
+import com.ritisha.nasa_apod_viewer.dto.NasaApodResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
-//more general version of @RestController
+//generic Spring-managed bean
 @Component
 public class NasaApiClient {
     private final RestClient restClient;
@@ -14,7 +14,8 @@ public class NasaApiClient {
     @Value("${nasa.api.key}")
     private String apiKey;
 
-    public NasaApiClient() {
+    public NasaApiClient(@Value("${nasa.api.key}") String apiKey) {
+        this.apiKey = apiKey;
         //builds a reusable HTTP client that points at the NASA base url
         this.restClient = RestClient.builder()
                 .baseUrl("https://api.nasa.gov/planetary/apod")
