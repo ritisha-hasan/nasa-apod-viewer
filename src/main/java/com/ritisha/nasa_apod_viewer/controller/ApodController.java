@@ -1,7 +1,7 @@
-package main.java.com.ritisha.nasa_apod_viewer.controller;
+package com.ritisha.nasa_apod_viewer.controller;
 
-import main.java.com.ritisha.nasa_apod_viewer.entity.ApodEntry;
-import main.java.com.ritisha.nasa_apod_viewer.service.ApodService;
+import com.ritisha.nasa_apod_viewer.entity.ApodEntry;
+import com.ritisha.nasa_apod_viewer.service.ApodService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

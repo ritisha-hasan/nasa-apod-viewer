@@ -1,15 +1,16 @@
-package main.java.com.ritisha.nasa_apod_viewer.dto;
+package com.ritisha.nasa_apod_viewer.dto;
 
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Slf4j
 @Data
 public class NasaApodResponse {
     private String date;
     private String title;
     private String explanation;
     private String url;
+
+    @JsonProperty("media_type")
     private String media_type;
 
     protected NasaApodResponse() {}

@@ -1,16 +1,18 @@
-package main.java.com.ritisha.nasa_apod_viewer.service;
+package com.ritisha.nasa_apod_viewer.service;
 
-import main.java.com.ritisha.nasa_apod_viewer.dto.NasaApodResponse;
-import main.java.com.ritisha.nasa_apod_viewer.entity.ApodEntry;
-import main.java.com.ritisha.nasa_apod_viewer.repository.ApodRepository;
+import com.ritisha.nasa_apod_viewer.dto.NasaApodResponse;
+import com.ritisha.nasa_apod_viewer.entity.ApodEntry;
+import com.ritisha.nasa_apod_viewer.repository.ApodRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 @Service
 public class ApodService {
     private final ApodRepository apodRepository;
     private final NasaApiClient nasaApiClient;
+    private static final ZoneId NASA_ZONE = ZoneId.of("America/New_York");
 
     public ApodService(ApodRepository apodRepository, NasaApiClient nasaApiClient) {
         this.apodRepository = apodRepository;
@@ -18,7 +20,7 @@ public class ApodService {
     }
 
     public ApodEntry getTodayApod(){
-        LocalDate today = LocalDate.now();
+        LocalDate today = LocalDate.now(NASA_ZONE);
         return apodRepository.findByLocalDate(today)
                 .orElseGet(() -> fetchAndSaveApod(today));
     }
